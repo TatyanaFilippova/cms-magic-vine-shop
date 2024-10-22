@@ -52,11 +52,23 @@
       "type": "text"
     },
     "slider": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "price": {
+      "type": "string"
+    },
+    "priceForm": {
+      "type": "text"
+    },
+    "filterParameters": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::filter-parameter.filter-parameter"
     }
   }
 }
