@@ -515,6 +515,34 @@ export interface ApiFilterParameterFilterParameter
   };
 }
 
+export interface ApiFilterTypeFilterType extends Struct.CollectionTypeSchema {
+  collectionName: 'filter_types';
+  info: {
+    singularName: 'filter-type';
+    pluralName: 'filter-types';
+    displayName: 'filter-type';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Schema.Attribute.String;
+    slug: Schema.Attribute.UID<'title'>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::filter-type.filter-type'
+    >;
+  };
+}
+
 export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   collectionName: 'products';
   info: {
@@ -544,6 +572,11 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::filter-parameter.filter-parameter'
     >;
+    filterTypes: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::filter-type.filter-type'
+    >;
+    week: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -935,6 +968,7 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::filter-parameter.filter-parameter': ApiFilterParameterFilterParameter;
+      'api::filter-type.filter-type': ApiFilterTypeFilterType;
       'api::product.product': ApiProductProduct;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;

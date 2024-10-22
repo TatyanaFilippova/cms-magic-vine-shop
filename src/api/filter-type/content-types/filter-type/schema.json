@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "filter_types",
+  "info": {
+    "singularName": "filter-type",
+    "pluralName": "filter-types",
+    "displayName": "filter-type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    }
+  }
+}
