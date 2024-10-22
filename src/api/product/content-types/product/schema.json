@@ -69,6 +69,14 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::filter-parameter.filter-parameter"
+    },
+    "filterTypes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::filter-type.filter-type"
+    },
+    "week": {
+      "type": "integer"
     }
   }
 }
