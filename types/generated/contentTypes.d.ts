@@ -620,6 +620,37 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiQuestionQuestion extends Struct.CollectionTypeSchema {
+  collectionName: 'questions';
+  info: {
+    singularName: 'question';
+    pluralName: 'questions';
+    displayName: 'question';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Schema.Attribute.String;
+    email: Schema.Attribute.String;
+    question: Schema.Attribute.Text;
+    product: Schema.Attribute.Relation<'oneToOne', 'api::product.product'>;
+    isNew: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::question.question'
+    >;
+  };
+}
+
 export interface ApiReviewReview extends Struct.CollectionTypeSchema {
   collectionName: 'reviews';
   info: {
@@ -1025,6 +1056,7 @@ declare module '@strapi/strapi' {
       'api::filter-type.filter-type': ApiFilterTypeFilterType;
       'api::order.order': ApiOrderOrder;
       'api::product.product': ApiProductProduct;
+      'api::question.question': ApiQuestionQuestion;
       'api::review.review': ApiReviewReview;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
