@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_eva_komi_service_cards",
+  "info": {
+    "displayName": "service-cards",
+    "icon": "apps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "list": {
+      "type": "component",
+      "repeatable": true,
+      "component": "eva-komi.service-card-item"
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "advantages",
+        "services"
+      ]
+    }
+  }
+}

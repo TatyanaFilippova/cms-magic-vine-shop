@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_eva_komi_service_card_items",
+  "info": {
+    "displayName": "service-card-item",
+    "icon": "chartPie"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "sort": {
+      "type": "integer"
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": [
+        "l",
+        "m",
+        "s"
+      ]
+    }
+  }
+}

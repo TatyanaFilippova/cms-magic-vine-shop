@@ -485,6 +485,48 @@ export interface PluginUsersPermissionsUser
   };
 }
 
+export interface ApiEvaKomiSeviceEvaKomiSevice
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'eva_komi_sevices';
+  info: {
+    singularName: 'eva-komi-sevice';
+    pluralName: 'eva-komi-sevices';
+    displayName: 'eva-komi-sevice';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Schema.Attribute.String;
+    slug: Schema.Attribute.UID<'title'>;
+    metaTitle: Schema.Attribute.String;
+    metaDescription: Schema.Attribute.Text;
+    subTitle: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    interactiveText: Schema.Attribute.String;
+    blocks: Schema.Attribute.DynamicZone<
+      ['eva-komi.text', 'eva-komi.service-cards', 'eva-komi.big-center-text']
+    >;
+    cardImage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    cardTitle: Schema.Attribute.String;
+    cardText: Schema.Attribute.String;
+    sort: Schema.Attribute.Integer;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::eva-komi-sevice.eva-komi-sevice'
+    >;
+  };
+}
+
 export interface ApiFilterParameterFilterParameter
   extends Struct.CollectionTypeSchema {
   collectionName: 'filter_parameters';
@@ -1052,6 +1094,7 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::eva-komi-sevice.eva-komi-sevice': ApiEvaKomiSeviceEvaKomiSevice;
       'api::filter-parameter.filter-parameter': ApiFilterParameterFilterParameter;
       'api::filter-type.filter-type': ApiFilterTypeFilterType;
       'api::order.order': ApiOrderOrder;

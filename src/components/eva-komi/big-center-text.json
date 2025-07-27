@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_eva_komi_big_center_texts",
+  "info": {
+    "displayName": "big-center-text",
+    "icon": "command"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "text"
+    }
+  }
+}

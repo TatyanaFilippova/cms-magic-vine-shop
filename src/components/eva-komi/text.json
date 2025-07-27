@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_eva_komi_texts",
+  "info": {
+    "displayName": "text",
+    "icon": "layer"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "blocks"
+    }
+  }
+}
